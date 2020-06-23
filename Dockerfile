@@ -3,7 +3,7 @@ FROM nvidia/cudagl:10.2-base-ubuntu16.04
 # Install packages
 RUN apt-get update && \
     apt-get install -y \
-        curl wget lsb-release build-essential && \
+        curl wget lsb-release build-essential sudo && \
     apt-get clean all
 
 # Install ROS Kinetic
@@ -14,7 +14,14 @@ RUN apt-get update && \
     apt-get install -y ros-kinetic-desktop-full ros-kinetic-controller-manager \
         python-rosdep python-rosinstall python-rosinstall-generator python-wstool && \
     apt-get clean all
+RUN rosdep init
+
+# Add Ubuntu user
+RUN adduser --disabled-password --gecos "" ubuntu
+RUN adduser ubuntu sudo
+RUN echo "%sudo ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
+USER ubuntu
 RUN echo "source /opt/ros/kinetic/setup.bash" >> ~/.bashrc
-run rosdep init && rosdep update
+RUN rosdep update
 
 WORKDIR /workspace

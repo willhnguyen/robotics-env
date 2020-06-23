@@ -11,7 +11,7 @@ docker run --rm -it \
     -e DISPLAY=:1 \
     --gpus all \
     --env="QT_X11_NO_MITSHM=1" \
-    -v $DIR/gazebo_gui.ini:/root/.gazebo/gui.ini \
+    -v $DIR/gazebo_gui.ini:/home/ubuntu/.gazebo/gui.ini \
     -v "/tmp/.X11-unix:/tmp/.X11-unix:rw" \
     -v `pwd`:/workspace \
     docker.pkg.github.com/willhnguyen/robotics-env/robotics-env:latest \
