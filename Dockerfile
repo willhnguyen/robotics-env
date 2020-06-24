@@ -3,7 +3,7 @@ FROM nvidia/cudagl:10.2-base-ubuntu16.04
 # Install packages
 RUN apt-get update && \
     apt-get install -y \
-        curl wget lsb-release build-essential sudo && \
+        curl wget lsb-release build-essential sudo clang-format && \
     apt-get clean all
 
 # Install ROS Kinetic
