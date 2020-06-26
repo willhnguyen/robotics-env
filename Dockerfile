@@ -16,6 +16,10 @@ RUN apt-get update && \
     apt-get clean all
 RUN rosdep init
 
+# Install ros-kinetic-librealsense
+COPY install_scripts ./install_scripts
+RUN ./install_scripts/ros_kinetic_librealsense.sh
+
 # Add Ubuntu user
 RUN adduser --disabled-password --gecos "" ubuntu
 RUN adduser ubuntu sudo
