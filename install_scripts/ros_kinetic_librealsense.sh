@@ -11,6 +11,7 @@ apt-get install -y binutils cpp cpp-5 dkms fakeroot gcc gcc-5 kmod libasan2 liba
 apt-get install -y libssl-dev libssl-doc libusb-1.0-0 libusb-1.0-0-dev libusb-1.0-doc linux-headers-4.4.0-159 linux-headers-4.4.0-159-generic linux-headers-generic zlib1g-dev
 
 # modify librealsense deb (unpack, replace script, repack)
+depmod
 apt-get download ros-kinetic-librealsense
 dpkg-deb -R ros-kinetic-librealsense*.deb ros-rslib/
 
