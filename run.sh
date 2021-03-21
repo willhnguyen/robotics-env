@@ -8,7 +8,7 @@ xhost +local:root # for the lazy and reckless
 docker run --rm -it \
     --name robond \
     --privileged \
-    -e DISPLAY=:1 \
+    -e DISPLAY=$DISPLAY \
     --gpus all \
     --env="QT_X11_NO_MITSHM=1" \
     -v $DIR/.gazebo:/home/ubuntu/.gazebo \
